@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Player.Core;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,13 +7,13 @@ public class Keyboard : MonoBehaviour
 {
     public GameObject playerObj;
     private CharacterController characterController;
-    private Player player;
+    private Attributes player;
 
     private Command movement;
 
     private void Start()
     {
-        player = playerObj.GetComponent<Player>();
+        player = playerObj.GetComponent<Attributes>();
         characterController = playerObj.GetComponent<CharacterController>();
 
         movement = new Movement(playerObj);

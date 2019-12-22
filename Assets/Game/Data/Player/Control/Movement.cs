@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Player.Core;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,11 +9,11 @@ public class Movement : Command
     private float z;
     private Vector3 pos;
     private CharacterController characterController;
-    private Player player;
+    private Attributes player;
 
     public Movement(GameObject playerObj)
     {
-        player = playerObj.GetComponent<Player>();
+        player = playerObj.GetComponent<Attributes>();
         characterController = playerObj.GetComponent<CharacterController>();
     }
     public override void Execute()

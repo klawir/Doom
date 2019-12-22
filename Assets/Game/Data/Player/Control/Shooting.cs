@@ -7,7 +7,7 @@ public class Shooting : MonoBehaviour
     public Bullet bullet;
     public Transform rifleBarrel;
     public Transform cameraTransform;
-
+    
     private void Update()
     {
         if (Input.GetMouseButton(0))
