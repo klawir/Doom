@@ -2,13 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace System
+public class Cursor : MonoBehaviour
 {
-    public class Cursor : MonoBehaviour
+    public static void Hide()
     {
-        public static void Hide()
-        {
-            UnityEngine.Cursor.lockState = CursorLockMode.Locked;
-        }
+        UnityEngine.Cursor.lockState = CursorLockMode.Locked;
     }
 }

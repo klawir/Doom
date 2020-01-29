@@ -12,8 +12,7 @@ public class Shooting : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
-            GameObject tempObj = Instantiate(bullet.gameObject, rifleBarrel.position, bullet.transform.rotation) as GameObject;
-            tempObj.GetComponent<Bullet>().Move(cameraTransform);
+            Instantiate(bullet, rifleBarrel.position, bullet.transform.rotation).Move(cameraTransform);
         }
     }
 }

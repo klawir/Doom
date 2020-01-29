@@ -8,17 +8,22 @@ public class MouseLook : MonoBehaviour
     private float mouseX;
     private float mouseY;
     private float xRotation;
-    public Transform player;
+    private Transform player;
 
     private void Start()
     {
-        System.Cursor.Hide();
+        Cursor.Hide();
+        player=GameObject.FindObjectOfType<CharacterController>().transform;
     }
     private void Update()
     {
-        Calculate();
-        Rotate();
+        if(IsDetectedMovement)
+        {
+            Calculate();
+            Rotate();
+        }
     }
+
     private void Rotate()
     {
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
@@ -26,9 +31,19 @@ public class MouseLook : MonoBehaviour
     }
     private void Calculate()
     {
-        mouseX = Input.GetAxis("Mouse X") * sensivity * Time.deltaTime;
-        mouseY = Input.GetAxis("Mouse Y") * sensivity * Time.deltaTime;
+        mouseX *= sensivity;
+        mouseY *= sensivity;
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+    }
+    private bool IsDetectedMovement
+    {
+        get 
+        {
+            mouseX = Input.GetAxis("Mouse X");
+            mouseY = Input.GetAxis("Mouse Y");
+            return mouseX < 0 || mouseX > 0 ||
+                mouseY < 0 || mouseY > 0;
+        }
     }
 }
